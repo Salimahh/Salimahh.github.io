@@ -1,0 +1,1230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Salimat Akinwande — Engineer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,700;1,500&family=Epilogue:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg:         #1C1410;
+  --bg-2:       #231A14;
+  --bg-3:       #2C2018;
+  --bg-card:    #2A1E16;
+  --bg-card-2:  #321F14;
+  --rule:       #3D2B1F;
+  --rule-light: #4A3528;
+  --ink:        #EDE0D0;
+  --ink-mid:    #B89880;
+  --ink-dim:    #7A5F4E;
+  --accent:     #C4956A;
+  --accent-2:   #A67850;
+  --accent-soft:#3D2B1F;
+  --tag-bg:     #2C1E14;
+  --tag-ink:    #C4956A;
+  --serif:      'Playfair Display', Georgia, serif;
+  --sans:       'Epilogue', system-ui, sans-serif;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; font-size: 16px; }
+
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--sans);
+  font-weight: 300;
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* grain overlay */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 0;
+  opacity: .4;
+}
+
+.container { max-width: 1080px; margin: 0 auto; padding: 0 2rem; position: relative; z-index: 1; }
+
+/* ── UTILS ── */
+.label {
+  font-family: var(--sans);
+  font-size: .65rem;
+  font-weight: 500;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+a { color: inherit; text-decoration: none; transition: color .2s; }
+a:hover { color: var(--accent); }
+
+/* ── NAV ── */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  background: rgba(28,20,16,.88);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--rule);
+}
+nav .container {
+  display: flex; align-items: center; justify-content: space-between;
+  height: 56px;
+}
+.nav-brand {
+  font-family: var(--serif);
+  font-size: .9rem;
+  font-weight: 500;
+  color: var(--ink);
+  letter-spacing: .02em;
+}
+.nav-links { display: flex; gap: 2rem; list-style: none; }
+.nav-links a {
+  font-size: .68rem; font-weight: 500;
+  letter-spacing: .16em; text-transform: uppercase;
+  color: var(--ink-dim); transition: color .2s;
+}
+.nav-links a:hover { color: var(--ink); }
+
+/* ── HERO ── */
+#hero {
+  min-height: 100vh;
+  display: flex; align-items: center;
+  padding-top: 56px;
+  border-bottom: 1px solid var(--rule);
+  position: relative; overflow: hidden;
+}
+#hero::after {
+  content: '';
+  position: absolute;
+  top: -20%; right: -10%;
+  width: 600px; height: 600px;
+  background: radial-gradient(circle, rgba(196,149,106,.06) 0%, transparent 65%);
+  pointer-events: none;
+}
+.hero-inner { padding: 5rem 0 4rem; }
+.hero-eyebrow {
+  display: flex; align-items: center; gap: .8rem;
+  margin-bottom: 1.8rem;
+}
+.hero-eyebrow::before {
+  content: ''; display: block;
+  width: 24px; height: 1px;
+  background: var(--accent);
+}
+.hero-name {
+  font-family: var(--serif);
+  font-size: clamp(3.2rem, 9vw, 6rem);
+  font-weight: 700;
+  line-height: 1.0;
+  color: var(--ink);
+  letter-spacing: -.02em;
+  margin-bottom: .5rem;
+}
+.hero-name em {
+  font-style: italic;
+  color: var(--accent);
+}
+.hero-tagline {
+  font-size: clamp(.9rem, 2vw, 1.05rem);
+  color: var(--ink-mid);
+  max-width: 500px;
+  line-height: 1.8;
+  margin-bottom: 2.5rem;
+}
+.hero-cta { display: flex; flex-wrap: wrap; gap: .75rem; }
+.btn {
+  display: inline-flex; align-items: center; gap: .35rem;
+  padding: .6rem 1.3rem;
+  font-family: var(--sans);
+  font-size: .7rem; font-weight: 500;
+  letter-spacing: .12em; text-transform: uppercase;
+  border: 1px solid; cursor: pointer;
+  transition: background .2s, color .2s, border-color .2s;
+}
+.btn-primary {
+  background: var(--accent); border-color: var(--accent); color: var(--bg);
+}
+.btn-primary:hover { background: var(--accent-2); border-color: var(--accent-2); color: var(--bg); }
+.btn-outline {
+  background: transparent; border-color: var(--rule-light); color: var(--ink-mid);
+}
+.btn-outline:hover { border-color: var(--accent); color: var(--ink); }
+.hero-stats {
+  display: flex; flex-wrap: wrap; gap: 3rem;
+  margin-top: 4rem; padding-top: 2rem;
+  border-top: 1px solid var(--rule);
+}
+.stat-num {
+  display: block;
+  font-family: var(--serif); font-size: 2rem; font-weight: 500;
+  color: var(--accent); line-height: 1; margin-bottom: .25rem;
+}
+.stat-label {
+  font-size: .65rem; letter-spacing: .16em;
+  text-transform: uppercase; color: var(--ink-dim);
+}
+
+/* ── SECTION SHELL ── */
+section { padding: 5rem 0; border-bottom: 1px solid var(--rule); }
+.sec-header {
+  display: flex; align-items: baseline; justify-content: space-between;
+  gap: 1rem; margin-bottom: 3rem; flex-wrap: wrap;
+}
+.sec-title {
+  font-family: var(--serif);
+  font-size: clamp(1.7rem, 4vw, 2.3rem);
+  font-weight: 500; color: var(--ink);
+  letter-spacing: -.01em;
+  display: flex; align-items: baseline; gap: .5rem;
+}
+.sec-num {
+  font-family: var(--serif); font-size: .85rem;
+  font-style: italic; color: var(--accent);
+}
+
+/* ── ABOUT ── */
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr 310px;
+  gap: 4rem; align-items: start;
+}
+.about-body p {
+  font-size: .95rem; color: var(--ink-mid);
+  line-height: 1.9; margin-bottom: 1.3rem;
+}
+.about-body p:last-child { margin-bottom: 0; }
+.about-body strong { color: var(--ink); font-weight: 400; }
+.about-card {
+  background: var(--bg-card);
+  border: 1px solid var(--rule);
+}
+.about-card-head {
+  padding: 1rem 1.3rem;
+  border-bottom: 1px solid var(--rule);
+}
+.about-card-section { padding: .2rem 1.3rem 1rem; }
+.about-card-section + .about-card-section {
+  border-top: 1px solid var(--rule);
+  padding-top: .8rem;
+}
+.card-row {
+  display: flex; justify-content: space-between;
+  align-items: baseline; gap: .5rem;
+  padding: .38rem 0;
+  border-bottom: 1px solid var(--rule);
+  font-size: .8rem;
+}
+.card-row:last-child { border-bottom: none; }
+.card-key { color: var(--accent); font-weight: 500; flex-shrink: 0; font-size: .72rem; letter-spacing: .06em; }
+.card-val { color: var(--ink-mid); text-align: right; font-size: .8rem; }
+
+/* ── PROJECTS ── */
+.projects-list { display: flex; flex-direction: column; gap: 1px; }
+.proj-item {
+  background: var(--bg-card);
+  border: 1px solid var(--rule);
+  padding: 2.2rem 2.2rem 2.2rem 2.5rem;
+  display: grid;
+  grid-template-columns: 1fr 250px;
+  gap: 2rem;
+  position: relative;
+  transition: background .25s;
+}
+.proj-item:hover { background: var(--bg-card-2); }
+.proj-item::before {
+  content: '';
+  position: absolute; left: 0; top: 0; bottom: 0;
+  width: 2px; background: var(--accent);
+  opacity: 0; transition: opacity .25s;
+}
+.proj-item:hover::before { opacity: 1; }
+.proj-meta {
+  display: flex; gap: .6rem; flex-wrap: wrap;
+  align-items: center; margin-bottom: .6rem;
+}
+.proj-badge {
+  font-size: .62rem; font-weight: 500; letter-spacing: .14em;
+  text-transform: uppercase; color: var(--accent);
+  background: var(--accent-soft); padding: .18rem .55rem;
+}
+.proj-year { font-size: .65rem; letter-spacing: .1em; text-transform: uppercase; color: var(--ink-dim); }
+.proj-title {
+  font-family: var(--serif); font-size: 1.1rem; font-weight: 500;
+  color: var(--ink); margin-bottom: .7rem; line-height: 1.3;
+}
+.proj-desc {
+  font-size: .88rem; color: var(--ink-mid);
+  line-height: 1.8; margin-bottom: 1rem;
+}
+.proj-desc strong { color: var(--ink); font-weight: 400; }
+.tag-list { display: flex; flex-wrap: wrap; gap: .35rem; margin-bottom: .5rem; }
+.tag {
+  font-size: .62rem; font-weight: 500; letter-spacing: .08em;
+  text-transform: uppercase; background: var(--tag-bg);
+  color: var(--tag-ink); padding: .2rem .55rem;
+  border: 1px solid var(--rule);
+}
+.proj-arch { font-size: .78rem; }
+.arch-title {
+  color: var(--accent); font-weight: 500;
+  letter-spacing: .14em; text-transform: uppercase;
+  font-size: .62rem; margin-bottom: .8rem;
+}
+.arch-row {
+  display: flex; justify-content: space-between;
+  padding: .32rem 0; border-bottom: 1px solid var(--rule);
+  font-size: .78rem;
+}
+.arch-row:last-child { border-bottom: none; }
+.arch-key { color: var(--accent); font-weight: 400; }
+.arch-val { color: var(--ink-mid); text-align: right; }
+
+/* mini projects grid */
+.mini-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 1px; margin-top: 1px;
+}
+.mini-card {
+  background: var(--bg-card); border: 1px solid var(--rule);
+  padding: 1.4rem; transition: background .2s;
+}
+.mini-card:hover { background: var(--bg-card-2); }
+.mini-title {
+  font-family: var(--serif); font-size: .95rem; font-weight: 500;
+  color: var(--ink); margin-bottom: .5rem; line-height: 1.3;
+}
+.mini-desc { font-size: .83rem; color: var(--ink-mid); line-height: 1.7; margin-bottom: .9rem; }
+
+/* ── IMAGE GALLERY ── */
+.img-gallery {
+  display: flex;
+  gap: .5rem;
+  overflow-x: auto;
+  margin-bottom: 1.2rem;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: thin;
+  scrollbar-color: var(--rule-light) transparent;
+  padding-bottom: .4rem;
+}
+.img-gallery::-webkit-scrollbar { height: 3px; }
+.img-gallery::-webkit-scrollbar-track { background: transparent; }
+.img-gallery::-webkit-scrollbar-thumb { background: var(--rule-light); border-radius: 2px; }
+.img-gallery-item {
+  flex: 0 0 auto;
+  scroll-snap-align: start;
+  width: 260px; height: 170px;
+  background: var(--bg-3);
+  border: 1px dashed var(--rule-light);
+  display: flex; align-items: center; justify-content: center;
+  color: var(--ink-dim); font-size: .65rem;
+  letter-spacing: .1em; text-transform: uppercase;
+  text-align: center; overflow: hidden;
+  position: relative;
+}
+.img-gallery-item img {
+  width: 100%; height: 100%; object-fit: cover;
+  display: block; position: absolute; inset: 0;
+}
+.img-gallery-item span { padding: .5rem; line-height: 1.5; }
+/* mini card gallery — smaller height */
+.mini-card .img-gallery-item { width: 200px; height: 130px; }
+
+/* ── RESEARCH INTERESTS ── */
+.research-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1px;
+}
+.research-card {
+  background: var(--bg-card);
+  border: 1px solid var(--rule);
+  padding: 1.8rem 1.6rem;
+  position: relative;
+  transition: background .25s;
+}
+.research-card:hover { background: var(--bg-card-2); }
+.research-card::before {
+  content: '';
+  position: absolute; left: 0; top: 0; bottom: 0;
+  width: 2px; background: var(--accent);
+  opacity: 0; transition: opacity .25s;
+}
+.research-card:hover::before { opacity: 1; }
+.research-id {
+  font-family: var(--serif); font-style: italic;
+  font-size: .78rem; color: var(--accent);
+  margin-bottom: .9rem; display: block;
+}
+.research-title {
+  font-family: var(--serif); font-size: 1rem; font-weight: 500;
+  color: var(--ink); margin-bottom: .8rem; line-height: 1.3;
+}
+.research-body {
+  font-size: .85rem; color: var(--ink-mid); line-height: 1.8;
+}
+
+/* ── SKILLS ── */
+.skills-outer {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 1px;
+}
+.skill-group {
+  background: var(--bg-card);
+  border: 1px solid var(--rule);
+  padding: 1.3rem;
+}
+.skill-group-title {
+  font-family: var(--serif); font-size: .88rem; font-weight: 500;
+  color: var(--ink); margin-bottom: .9rem;
+  padding-bottom: .6rem; border-bottom: 1px solid var(--rule);
+}
+.skill-list { list-style: none; }
+.skill-list li {
+  font-size: .82rem; color: var(--ink-mid);
+  padding: .22rem 0;
+  display: flex; align-items: center; gap: .5rem;
+}
+.skill-list li::before {
+  content: ''; display: block;
+  width: 3px; height: 3px;
+  background: var(--accent); flex-shrink: 0;
+}
+.skill-list li.learning { color: var(--ink-dim); font-style: italic; }
+.skill-list li.learning::before { background: var(--ink-dim); }
+
+/* ── POSTGRAD ── */
+.postgrad-grid {
+  display: grid;
+  grid-template-columns: 1fr 300px;
+  gap: 4rem; align-items: start;
+}
+.postgrad-body p {
+  font-size: .95rem; color: var(--ink-mid);
+  line-height: 1.9; margin-bottom: 1.3rem;
+}
+.postgrad-body strong { color: var(--ink); font-weight: 400; }
+.postgrad-goals { display: flex; flex-direction: column; gap: 1px; }
+.goal-item {
+  background: var(--bg-card); border: 1px solid var(--rule);
+  padding: .9rem 1.1rem;
+  display: flex; gap: 1rem; align-items: baseline;
+  transition: background .2s;
+}
+.goal-item:hover { background: var(--bg-card-2); }
+.goal-num {
+  font-family: var(--serif); font-size: .8rem; font-style: italic;
+  color: var(--accent); flex-shrink: 0; min-width: 1.4rem;
+}
+.goal-text { font-size: .83rem; color: var(--ink-mid); line-height: 1.6; }
+
+/* ── AWARDS ── */
+.awards-table { width: 100%; border-collapse: collapse; }
+.awards-table thead tr {
+  border-bottom: 1px solid var(--rule-light);
+}
+.awards-table th {
+  font-size: .65rem; font-weight: 500; letter-spacing: .18em;
+  text-transform: uppercase; color: var(--accent);
+  padding: .6rem 1rem .6rem 0; text-align: left;
+}
+.awards-table tbody tr {
+  border-bottom: 1px solid var(--rule);
+  transition: background .15s;
+}
+.awards-table tbody tr:hover { background: var(--bg-card); }
+.awards-table td {
+  padding: 1rem 1rem 1rem 0;
+  font-size: .85rem; color: var(--ink-mid);
+  vertical-align: top;
+}
+.awards-table td:first-child { color: var(--accent); font-weight: 400; width: 70px; }
+.awards-table .award-name { color: var(--ink); font-weight: 400; }
+.award-inst { font-size: .78rem; color: var(--ink-dim); margin-top: .15rem; }
+.award-type-badge {
+  font-size: .6rem; letter-spacing: .1em; text-transform: uppercase;
+  background: var(--accent-soft); color: var(--accent);
+  padding: .18rem .5rem; border: 1px solid var(--rule);
+  display: inline-block; margin-top: .3rem;
+}
+
+/* ── CONTACT ── */
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem; align-items: start;
+}
+.contact-intro {
+  font-family: var(--serif); font-size: 1.5rem; font-weight: 500;
+  color: var(--ink); line-height: 1.4; margin-bottom: 1.5rem;
+  font-style: italic;
+}
+.contact-body {
+  font-size: .9rem; color: var(--ink-mid);
+  line-height: 1.85; margin-bottom: 2rem;
+}
+.contact-links { display: flex; flex-direction: column; gap: 1px; }
+.contact-link-item {
+  background: var(--bg-card); border: 1px solid var(--rule);
+  padding: .85rem 1.1rem;
+  display: flex; gap: 1rem; align-items: center;
+  transition: background .2s;
+}
+.contact-link-item:hover { background: var(--bg-card-2); }
+.cl-label { font-size: .62rem; letter-spacing: .14em; text-transform: uppercase; color: var(--accent); display: block; margin-bottom: .1rem; }
+.cl-val { font-size: .83rem; color: var(--ink-mid); }
+.cl-val a:hover { color: var(--accent); }
+
+/* form */
+.contact-form { display: flex; flex-direction: column; gap: .9rem; }
+.form-group { display: flex; flex-direction: column; gap: .35rem; }
+.form-label {
+  font-size: .65rem; letter-spacing: .16em;
+  text-transform: uppercase; color: var(--accent);
+}
+.form-input, .form-textarea {
+  background: var(--bg-card); border: 1px solid var(--rule);
+  color: var(--ink); font-family: var(--sans);
+  font-size: .88rem; font-weight: 300;
+  padding: .75rem 1rem;
+  outline: none; width: 100%;
+  transition: border-color .2s;
+  resize: none;
+  -webkit-appearance: none;
+}
+.form-input:focus, .form-textarea:focus { border-color: var(--accent); }
+.form-input::placeholder, .form-textarea::placeholder { color: var(--ink-dim); }
+.form-textarea { min-height: 130px; }
+.form-submit {
+  background: var(--accent); border: 1px solid var(--accent);
+  color: var(--bg); font-family: var(--sans);
+  font-size: .72rem; font-weight: 500;
+  letter-spacing: .14em; text-transform: uppercase;
+  padding: .8rem 1.5rem; cursor: pointer;
+  transition: background .2s, border-color .2s;
+  align-self: flex-start;
+}
+.form-submit:hover { background: var(--accent-2); border-color: var(--accent-2); }
+.form-success {
+  display: none;
+  font-size: .88rem; color: var(--accent);
+  padding: .75rem 1rem; border: 1px solid var(--rule);
+  background: var(--bg-card);
+}
+
+/* ── FOOTER ── */
+footer {
+  padding: 2.5rem 0;
+  border-top: 1px solid var(--rule);
+}
+.footer-inner {
+  display: flex; flex-wrap: wrap; gap: 1.5rem;
+  justify-content: space-between; align-items: center;
+}
+.footer-name { font-family: var(--serif); font-size: .95rem; font-weight: 500; }
+.footer-links { display: flex; gap: 1.5rem; }
+.footer-links a {
+  font-size: .68rem; letter-spacing: .12em; text-transform: uppercase;
+  color: var(--ink-dim); transition: color .2s;
+}
+.footer-links a:hover { color: var(--ink); }
+.footer-copy { font-size: .72rem; color: var(--ink-dim); }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 820px) {
+  .about-grid, .postgrad-grid, .contact-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+  .proj-item { grid-template-columns: 1fr; }
+  .proj-arch { display: none; }
+  .nav-links { display: none; }
+  .hero-stats { gap: 2rem; }
+  section { padding: 3.5rem 0; }
+}
+@media (max-width: 480px) {
+  .hero-inner { padding: 3rem 0 2.5rem; }
+  .hero-name { font-size: 2.8rem; }
+  .hero-stats { gap: 1.5rem; }
+}
+
+/* ── ENTRY ANIMATION ── */
+@media (prefers-reduced-motion: no-preference) {
+  .hero-eyebrow, .hero-name, .hero-tagline, .hero-cta, .hero-stats {
+    opacity: 0; transform: translateY(14px);
+    animation: rise .65s ease forwards;
+  }
+  .hero-eyebrow  { animation-delay: .1s; }
+  .hero-name     { animation-delay: .22s; }
+  .hero-tagline  { animation-delay: .34s; }
+  .hero-cta      { animation-delay: .46s; }
+  .hero-stats    { animation-delay: .6s; }
+  @keyframes rise { to { opacity: 1; transform: translateY(0); } }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="container">
+    <span class="nav-brand">Salimat Akinwande</span>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#research">Research</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#postgrad">Postgrad</a></li>
+      <li><a href="#awards">Awards</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- HERO -->
+<header id="hero">
+  <div class="container">
+    <div class="hero-inner">
+      <div class="hero-eyebrow">
+        <span class="label">Electronic &amp; Electrical Engineer &nbsp;·&nbsp; Robotics &amp; Embedded Systems &nbsp;·&nbsp; Ibadan, Nigeria</span>
+      </div>
+      <h1 class="hero-name">Salimat<br><em>Akinwande</em></h1>
+      <p class="hero-tagline">
+        Building systems that work in the real world, at the point where power engineering meets robotics and IoT.
+      </p>
+      <div class="hero-cta">
+        <a href="#projects" class="btn btn-primary">View Projects</a>
+        <a href="#contact" class="btn btn-outline">Get in Touch</a>
+        <a href="https://github.com/Salimahh" target="_blank" rel="noopener" class="btn btn-outline">GitHub ↗</a>
+        <a href="https://linkedin.com/in/salimat-akinwande" target="_blank" rel="noopener" class="btn btn-outline">LinkedIn ↗</a>
+        <!-- <a href="Salimat_Oluwatobi_Akinwande_RESUME.pdf" download class="btn btn-outline">CV ↓</a> -->
+      </div>
+      <div class="hero-stats">
+        <div>
+          <span class="stat-num">4.51</span>
+          <span class="stat-label">CGPA / 5.00</span>
+        </div>
+        <div>
+          <span class="stat-num">Top 3</span>
+          <span class="stat-label">of 147 graduates</span>
+        </div>
+        <div>
+          <span class="stat-num">1st Class</span>
+          <span class="stat-label">Honours</span>
+        </div>
+        <div>
+          <span class="stat-num">5+</span>
+          <span class="stat-label">Built Projects</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="container">
+    <div class="sec-header">
+      <h2 class="sec-title"><span class="sec-num">01</span> About</h2>
+      <span class="label">Bio &amp; Background</span>
+    </div>
+    <div class="about-grid">
+      <div class="about-body">
+        <p>
+          I studied Electronic and Electrical Engineering at LAUTECH and graduated with <strong>First Class Honours</strong>, finishing in the top three of my class. Power systems was what I knew, it was what I studied, and for a long time it was where I expected to stay.
+        </p>
+        <p>
+          Then I got admitted into RAIN and started working with robots. Not reading about them, actually building them. That changed things.
+        </p>
+        <p>
+          I am not going to pretend I have it all figured out, because I do not. But I know that the work I am doing now — getting a machine to balance itself, building a system that cleans a solar panel with the press of a button, fabricating a conveyor that moves a bottle through a filling line — that is the kind of engineering that keeps me up at night in the good way.
+        </p>
+        <p>
+          My final year project started from a simple observation. In Nigeria, we deal with power issues by going solar. Solar panels get dusty. People climb rooftops to clean them, sometimes getting hurt in the process. Robotic arms can scratch the panel surface. So I designed an IoT-controlled water spray system that cleans panels automatically from a mobile app. Testing showed a <strong>40% improvement in efficiency</strong> compared to uncleaned panels. The problem was not complicated. The solution was not complicated. What mattered was that someone actually built it.
+        </p>
+        <p>
+          I am currently at RAIN deepening my work in embedded systems and autonomous systems. I am looking for postgraduate opportunities where I can keep building on what I have started and eventually bring something back that is actually useful in Nigeria, where the infrastructure problems are real and most of the engineering solutions are still waiting to be built.
+        </p>
+      </div>
+      <aside>
+        <div class="about-card">
+          <img src="Portfolio profile picture.jpeg" alt="Salimat Akinwande" style="width:100%; height:220px; object-fit:cover; object-position:center top; display:block;"/>
+          <div class="about-card-head">
+            <span class="label">Contact</span>
+          </div>
+          <div class="about-card-section">
+            <div class="card-row"><span class="card-key">Email</span><span class="card-val">mjoakinwande@gmail.com</span></div>
+            <div class="card-row"><span class="card-key">Mobile</span><span class="card-val">+234 806 555 6921</span></div>
+            <div class="card-row"><span class="card-key">Location</span><span class="card-val">Ibadan, Nigeria</span></div>
+            <div class="card-row"><span class="card-key">LinkedIn</span><span class="card-val"><a href="https://linkedin.com/in/salimat-akinwande" target="_blank" rel="noopener" style="color:var(--accent)">in/salimat-akinwande ↗</a></span></div>
+          </div>
+          <div class="about-card-section">
+            <span class="label" style="display:block;margin-bottom:.6rem;">Academic</span>
+            <div class="card-row"><span class="card-key">Degree</span><span class="card-val">B.Tech, EEE</span></div>
+            <div class="card-row"><span class="card-key">University</span><span class="card-val">LAUTECH, Ogbomoso</span></div>
+            <div class="card-row"><span class="card-key">CGPA</span><span class="card-val">4.51 / 5.00 — Top 3</span></div>
+            <div class="card-row"><span class="card-key">Graduated</span><span class="card-val">September 2025</span></div>
+            <div class="card-row"><span class="card-key">Focus</span><span class="card-val">Power Systems &amp; Renewable Energy</span></div>
+          </div>
+          <div class="about-card-section">
+            <span class="label" style="display:block;margin-bottom:.6rem;">Currently</span>
+            <div class="card-row"><span class="card-key">Role</span><span class="card-val">Robotics Dev &amp; Automation</span></div>
+            <div class="card-row"><span class="card-key">At</span><span class="card-val">RAIN, Ibadan</span></div>
+            <div class="card-row"><span class="card-key">Since</span><span class="card-val">October 2025</span></div>
+          </div>
+          <div class="about-card-section">
+            <span class="label" style="display:block;margin-bottom:.6rem;">Memberships</span>
+            <div class="card-row"><span class="card-key">NSE</span><span class="card-val">Graduate Member</span></div>
+            <div class="card-row"><span class="card-key">APWEN</span><span class="card-val">Graduate Member</span></div>
+            <div class="card-row"><span class="card-key">RAIN-INN</span><span class="card-val">Member</span></div>
+          </div>
+        </div>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<!-- RESEARCH INTERESTS -->
+<section id="research">
+  <div class="container">
+    <div class="sec-header">
+      <h2 class="sec-title"><span class="sec-num">02</span> Research Interests</h2>
+      <span class="label">Academic Focus</span>
+    </div>
+    <div class="research-grid">
+
+      <article class="research-card">
+        <span class="research-id">R — 01</span>
+        <h3 class="research-title">Automated Monitoring for Energy Infrastructure</h3>
+        <p class="research-body">
+          I come from power systems, so I know what it looks like when things fail and someone has to physically go and check why. My solar panel project made me think about how much of that work could be done remotely. I am interested in IoT and robotic systems that can monitor, maintain, and respond to faults in energy infrastructure — solar farms, substations, distribution networks — without putting a person in a dangerous place to do it.
+        </p>
+      </article>
+
+      <article class="research-card">
+        <span class="research-id">R — 02</span>
+        <h3 class="research-title">Assistive Robotics and Physical Support Systems</h3>
+        <p class="research-body">
+          The more I build, the more I think about who a robot could actually help. I am interested in systems designed to support people with physical limitations — whether that is a device that extends someone's reach and strength, or something that assists with movement or rehabilitation. This is early for me and I will not pretend otherwise. But it is the direction I find myself thinking in when I think about what I want the work to eventually mean.
+        </p>
+      </article>
+
+      <article class="research-card">
+        <span class="research-id">R — 03</span>
+        <h3 class="research-title">Robotics Under Real-World Constraints</h3>
+        <p class="research-body">
+          Most robotics research assumes a controlled lab environment — reliable power, clean surfaces, standard parts available on next-day delivery. Nigeria does not look like that, and neither do most of the places where this technology would actually matter. I am interested in building systems that work under those conditions. Constrained power, limited connectivity, improvised materials. When my barcode module was unavailable I switched to RFID and it worked better anyway. I want to take that kind of thinking further, systematically.
+        </p>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="container">
+    <div class="sec-header">
+      <h2 class="sec-title"><span class="sec-num">03</span> Projects</h2>
+      <span class="label">Engineering Work</span>
+    </div>
+
+    <div class="projects-list">
+
+      <!-- Project 1 -->
+      <article class="proj-item">
+        <div>
+          <div class="proj-meta">
+            <span class="proj-badge">Final Year Project</span>
+            <span class="proj-year">2025</span>
+          </div>
+          <h3 class="proj-title">IoT Automated Solar Panel Cleaning System</h3>
+          <div class="img-gallery">
+            <div class="img-gallery-item"><img src="SolarPanelProject.jpg" alt="Brief description" /><span>Panel Cleaning System</span></div>
+            <!-- <div class="img-gallery-item"><span>Add image / video thumbnail</span></div> -->
+            <!-- <div class="img-gallery-item"><span>Add image / video thumbnail</span></div> -->
+          </div>
+          <p class="proj-desc">
+            The idea came from a real problem. In Nigeria, solar is the practical answer to an unreliable grid. But panels get dusty, and cleaning them means someone has to climb the roof — which leads to injuries. Robotic arms scratch the surface. So I built an IoT-controlled water spray mechanism that cleans the panels from a mobile app. You press a button and the pump runs. <strong>Testing confirmed a 40% increase in photovoltaic efficiency</strong> compared to uncleaned panels. The manuscript has been co-authored with three supervisors and is currently under journal review.
+          </p>
+          <div class="tag-list">
+            <span class="tag">ESP32</span><span class="tag">IoT</span><span class="tag">Mobile App Control</span>
+            <span class="tag">Renewable Energy</span><span class="tag">C++</span><span class="tag">Water Pump</span>
+          </div>
+        </div>
+        <div class="proj-arch">
+          <p class="arch-title">System Overview</p>
+          <div class="arch-row"><span class="arch-key">MCU</span><span class="arch-val">ESP32</span></div>
+          <div class="arch-row"><span class="arch-key">Interface</span><span class="arch-val">Mobile Application</span></div>
+          <div class="arch-row"><span class="arch-key">Actuator</span><span class="arch-val">Water Pump</span></div>
+          <div class="arch-row"><span class="arch-key">Protocol</span><span class="arch-val">WiFi / IoT</span></div>
+          <div class="arch-row"><span class="arch-key">Result</span><span class="arch-val">+40% PV Efficiency</span></div>
+          <div class="arch-row"><span class="arch-key">Status</span><span class="arch-val">Under Journal Review</span></div>
+        </div>
+      </article>
+
+      <!-- Project 2 -->
+      <article class="proj-item">
+        <div>
+          <div class="proj-meta">
+            <span class="proj-badge">Personal Project</span>
+            <span class="proj-year">2025 — Ongoing</span>
+          </div>
+          <h3 class="proj-title">Self-Balancing Robot — PID Control System</h3>
+          <div class="img-gallery">
+            <div class="img-gallery-item"><img src="SelfBalancingBot.jpeg" alt="Brief description" /><span>Balancing Bot Image</span></div>
+            <!-- <div class="img-gallery-item"><span>Add image / video thumbnail</span></div> -->
+            <!-- <div class="img-gallery-item"><span>Add image / video thumbnail</span></div> -->
+          </div>
+          <p class="proj-desc">
+            A two-wheeled robot that keeps itself upright using PID control. The MPU6050 reads tilt data via I2C and feeds the Arduino Uno roughly 100 times per second. The controller works out how far the robot has leaned and how fast it is falling, then adjusts motor speeds through the L298N driver to correct before it tips. The robot works. I learned the initial PID logic from a colleague's working version — but I am now going through the parameters methodically, trying to understand how varying Kp and Kd changes how aggressively the system corrects error, and how motor response speed connects to balance stability. <strong>That process has been a better control systems education than the lectures were.</strong>
+          </p>
+          <div class="tag-list">
+            <span class="tag">Arduino Uno</span><span class="tag">MPU6050</span><span class="tag">L298N</span>
+            <span class="tag">PID Control</span><span class="tag">C++</span><span class="tag">I2C</span>
+          </div>
+        </div>
+        <div class="proj-arch">
+          <p class="arch-title">System Architecture</p>
+          <div class="arch-row"><span class="arch-key">MCU</span><span class="arch-val">Arduino Uno</span></div>
+          <div class="arch-row"><span class="arch-key">Sensor</span><span class="arch-val">MPU6050 via I2C</span></div>
+          <div class="arch-row"><span class="arch-key">Algorithm</span><span class="arch-val">PID at ~100Hz</span></div>
+          <div class="arch-row"><span class="arch-key">Driver</span><span class="arch-val">L298N via PWM</span></div>
+          <div class="arch-row"><span class="arch-key">Power</span><span class="arch-val">2x 3.7V 2000mAh</span></div>
+          <div class="arch-row"><span class="arch-key">Frame</span><span class="arch-val">Plywood</span></div>
+        </div>
+      </article>
+
+      <!-- Project 3 -->
+      <article class="proj-item">
+        <div>
+          <div class="proj-meta">
+            <span class="proj-badge">RAIN — Semester Project</span>
+            <span class="proj-year">2025</span>
+          </div>
+          <h3 class="proj-title">Smart Shopping Cart and Billing System</h3>
+          <div class="img-gallery">
+            <div class="img-gallery-item"><img src="SmartShoppingCart.jpeg" alt="Brief description" /><span>Smart Cart Prototype</span></div>
+            <!-- <div class="img-gallery-item"><span>Add image / video thumbnail</span></div> -->
+            <!-- <div class="img-gallery-item"><span>Add image / video thumbnail</span></div> -->
+          </div>
+          <p class="proj-desc">
+            My first semester project at RAIN. The original plan was to use a barcode reader, but barcode modules are genuinely difficult to source in Nigeria, so I switched to RFID. The ESP32 reads each tag as items are placed in the cart and generates a running digital bill in real time. It worked at the demo. The constraint that forced me to change approach ended up being a better fit for the environment I was building in anyway.
+          </p>
+          <div class="tag-list">
+            <span class="tag">ESP32</span><span class="tag">RFID</span><span class="tag">C++</span>
+            <span class="tag">IoT</span><span class="tag">Real-time Billing</span>
+          </div>
+        </div>
+        <div class="proj-arch">
+          <p class="arch-title">System Overview</p>
+          <div class="arch-row"><span class="arch-key">MCU</span><span class="arch-val">ESP32</span></div>
+          <div class="arch-row"><span class="arch-key">Detection</span><span class="arch-val">RFID Tags</span></div>
+          <div class="arch-row"><span class="arch-key">Output</span><span class="arch-val">Digital Bill</span></div>
+          <div class="arch-row"><span class="arch-key">Original Plan</span><span class="arch-val">Barcode (unavailable)</span></div>
+          <div class="arch-row"><span class="arch-key">Status</span><span class="arch-val">Demoed at RAIN</span></div>
+        </div>
+      </article>
+
+      <!-- Project 4 -->
+      <article class="proj-item">
+        <div>
+          <div class="proj-meta">
+            <span class="proj-badge">Group Project — RAIN</span>
+            <span class="proj-year">2025</span>
+          </div>
+          <h3 class="proj-title">Automated Bottling System — Custom Fabricated Mechatronic System</h3>
+          <div class="img-gallery">
+            <div class="img-gallery-item"><img src="BottlingSystem.jpeg" alt="Brief description" /><span>Bottling System</span></div>
+            <!-- <div class="img-gallery-item"><span>Add image / video thumbnail</span></div> -->
+            <!-- <div class="img-gallery-item"><span>Add image / video thumbnail</span></div> -->
+          </div>
+          <p class="proj-desc">
+            Most of this project was fabrication, and that was where I was most involved. The conveyor system was built from plywood, pipes, and bearings. The rotation stage used two layers of 3D-printed components to move each bottle into position under the filling nozzle. Once there, a pump fills the bottle, then it moves to a capping station and out into the collection tray. The full mechanical sequence was walked through and each stage functioned. The code integration was still in progress at the time of review. Building the physical system from raw materials — cutting the wood, fitting the pipes, getting each stage to actually do what it was supposed to — that was the work, and it was done.
+          </p>
+          <div class="tag-list">
+            <span class="tag">Fabrication</span><span class="tag">Stepper Motors</span><span class="tag">3D Printing</span>
+            <span class="tag">Plywood</span><span class="tag">Mechatronics</span><span class="tag">Conveyor System</span>
+          </div>
+        </div>
+        <div class="proj-arch">
+          <p class="arch-title">Production Sequence</p>
+          <div class="arch-row"><span class="arch-key">Stage 1</span><span class="arch-val">Conveyor advances bottle</span></div>
+          <div class="arch-row"><span class="arch-key">Stage 2</span><span class="arch-val">Rotation aligns to nozzle</span></div>
+          <div class="arch-row"><span class="arch-key">Stage 3</span><span class="arch-val">Pump fills bottle</span></div>
+          <div class="arch-row"><span class="arch-key">Stage 4</span><span class="arch-val">Capping station</span></div>
+          <div class="arch-row"><span class="arch-key">Body</span><span class="arch-val">Plywood, pipes, bearings</span></div>
+          <div class="arch-row"><span class="arch-key">Rotation</span><span class="arch-val">3D-printed, 2 layers</span></div>
+        </div>
+      </article>
+
+    </div>
+
+    <!-- Mini Projects -->
+    <div style="margin-top: 3rem;">
+      <div class="sec-header" style="margin-bottom:1.5rem;">
+        <h3 style="font-family:var(--serif);font-size:1.1rem;font-weight:500;color:var(--ink-mid);">Other Builds</h3>
+        <span class="label">Along the way</span>
+      </div>
+      <div class="mini-grid">
+        <article class="mini-card">
+          <div class="proj-meta" style="margin-bottom:.5rem;">
+            <span class="proj-badge">Group — RAIN</span>
+            <span class="proj-year">2025</span>
+          </div>
+          <h4 class="mini-title">Height Measuring System</h4>
+          <!-- <div class="img-gallery">
+            <div class="img-gallery-item"><span>Add image</span></div>
+            <div class="img-gallery-item"><span>Add image</span></div>
+          </div> -->
+          <p class="mini-desc">ESP32 reads distance from an ultrasonic sensor and converts it to a height measurement. Results published over MQTT for remote monitoring on the same network.</p>
+          <div class="tag-list">
+            <span class="tag">ESP32</span><span class="tag">Ultrasonic</span><span class="tag">MQTT</span>
+          </div>
+        </article>
+        <article class="mini-card">
+          <div class="proj-meta" style="margin-bottom:.5rem;">
+            <span class="proj-badge">LAUTECH SWEP</span>
+            <span class="proj-year">2023</span>
+          </div>
+          <h4 class="mini-title">2.5kVA Solar-Powered Inverter</h4>
+          <!-- <div class="img-gallery">
+            <div class="img-gallery-item"><span>Add image</span></div>
+            <div class="img-gallery-item"><span>Add image</span></div>
+          </div> -->
+          <p class="mini-desc">Designed and built a functional 2.5kVA inverter system to support departmental lab operations, alongside a transistor-based signal generator. Full circuit schematics documented.</p>
+          <div class="tag-list">
+            <span class="tag">Power Electronics</span><span class="tag">Proteus</span><span class="tag">Solar</span>
+          </div>
+        </article>
+        <article class="mini-card">
+          <div class="proj-meta" style="margin-bottom:.5rem;">
+            <span class="proj-badge">Personal</span>
+            <span class="proj-year">Ongoing</span>
+          </div>
+          <h4 class="mini-title">More Coming</h4>
+          <p class="mini-desc">Projects are ongoing and this page will be updated as they are documented. If you want to know what I am working on right now, just ask.</p>
+          <div class="tag-list">
+            <span class="tag">Embedded Systems</span><span class="tag">Robotics</span><span class="tag">IoT</span>
+          </div>
+        </article>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="container">
+    <div class="sec-header">
+      <h2 class="sec-title"><span class="sec-num">04</span> Skills</h2>
+      <span class="label">Technical Stack</span>
+    </div>
+    <div class="skills-outer">
+      <div class="skill-group">
+        <h3 class="skill-group-title">Microcontrollers &amp; Hardware</h3>
+        <ul class="skill-list">
+          <li>Arduino (Uno, Nano)</li>
+          <li>ESP32</li>
+          <li>Raspberry Pi Pico</li>
+          <li>MPU6050 (IMU)</li>
+          <li>L298N Motor Driver</li>
+          <li>HC-SR04 Ultrasonic</li>
+          <li>RFID Modules</li>
+          <li>Servo &amp; Stepper Motors</li>
+        </ul>
+      </div>
+      <div class="skill-group">
+        <h3 class="skill-group-title">Programming</h3>
+        <ul class="skill-list">
+          <li>C++ / Arduino IDE</li>
+          <li>Python</li>
+          <li>MicroPython</li>
+          <li class="learning">ROS2 — in progress</li>
+        </ul>
+      </div>
+      <div class="skill-group">
+        <h3 class="skill-group-title">IoT &amp; Protocols</h3>
+        <ul class="skill-list">
+          <li>MQTT (HiveMQ)</li>
+          <li>I2C / SPI / UART</li>
+          <li>WiFi-based IoT</li>
+          <li>Blynk Platform</li>
+          <li>HTTP / REST APIs</li>
+        </ul>
+      </div>
+      <div class="skill-group">
+        <h3 class="skill-group-title">Control &amp; Robotics</h3>
+        <ul class="skill-list">
+          <li>PID Control Theory</li>
+          <li>Sensor Fusion (IMU)</li>
+          <li>PWM Motor Control</li>
+          <li class="learning">Forward Kinematics — in progress</li>
+          <li class="learning">Autonomous Navigation — in progress</li>
+        </ul>
+      </div>
+      <div class="skill-group">
+        <h3 class="skill-group-title">Design &amp; Fabrication</h3>
+        <ul class="skill-list">
+          <li>Circuit Design &amp; Prototyping</li>
+          <li>Proteus Simulation</li>
+          <li>Fusion 360 / CAD</li>
+          <li>3D Printing</li>
+          <li>Hardware Troubleshooting</li>
+        </ul>
+      </div>
+      <div class="skill-group">
+        <h3 class="skill-group-title">Power Systems</h3>
+        <ul class="skill-list">
+          <li>Power Systems Operations</li>
+          <li>132kV / 330kV Substations</li>
+          <li>Transformer &amp; CB Maintenance</li>
+          <li>Renewable Energy Systems</li>
+          <li>Omicron CT Analyzer</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- POSTGRAD -->
+<section id="postgrad">
+  <div class="container">
+    <div class="sec-header">
+      <h2 class="sec-title"><span class="sec-num">05</span> Postgraduate</h2>
+      <span class="label">What I am Looking For</span>
+    </div>
+    <div class="postgrad-grid">
+      <div class="postgrad-body">
+        <p>
+          I am actively looking for <strong>Masters and PhD programs</strong> in robotics, embedded systems, or smart energy systems. I do not have a thesis topic locked down yet, and I am not going to pretend I do.
+        </p>
+        <p>
+          What I do have is five years of power systems knowledge, a growing foundation in robotics and IoT through RAIN, and a genuine interest in problems that sit where those two areas touch. Particularly in contexts like Nigeria, where the infrastructure challenges are real, the constraints are different from what a textbook assumes, and the engineering solutions are mostly still waiting to be built.
+        </p>
+        <p>
+          I want to work with a supervisor who takes hardware seriously, not just simulation. I want to be in a lab where things get built and tested, not only modelled. And when I am done, I want to do something with it here.
+        </p>
+        <p>
+          I am open to any country. <strong>Funding matters. The work matters more.</strong>
+        </p>
+      </div>
+      <div>
+        <div class="postgrad-goals">
+          <div class="goal-item">
+            <span class="goal-num">01</span>
+            <span class="goal-text">Pursue a funded Masters or PhD in robotics or embedded systems</span>
+          </div>
+          <div class="goal-item">
+            <span class="goal-num">02</span>
+            <span class="goal-text">Work on research that touches real infrastructure problems</span>
+          </div>
+          <div class="goal-item">
+            <span class="goal-num">03</span>
+            <span class="goal-text">Build more complex autonomous systems from the ground up</span>
+          </div>
+          <div class="goal-item">
+            <span class="goal-num">04</span>
+            <span class="goal-text">Publish research that is useful, not just citeable</span>
+          </div>
+          <div class="goal-item">
+            <span class="goal-num">05</span>
+            <span class="goal-text">Come back and build something in Nigeria that lasts</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- AWARDS -->
+<section id="awards">
+  <div class="container">
+    <div class="sec-header">
+      <h2 class="sec-title"><span class="sec-num">06</span> Awards</h2>
+      <span class="label">Recognition</span>
+    </div>
+    <table class="awards-table">
+      <thead>
+        <tr>
+          <th>Year</th>
+          <th>Award</th>
+          <th style="text-align:right;">Type</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>2025</td>
+          <td>
+            <div class="award-name">Best Female Graduating Student — Dept. of EEE</div>
+            <div class="award-inst">Ladoke Akintola University of Technology</div>
+          </td>
+          <td style="text-align:right;"><span class="award-type-badge">Academic</span></td>
+        </tr>
+        <tr>
+          <td>2025</td>
+          <td>
+            <div class="award-name">Academic Excellence Award — Dept. of EEE</div>
+            <div class="award-inst">Ladoke Akintola University of Technology</div>
+          </td>
+          <td style="text-align:right;"><span class="award-type-badge">Academic</span></td>
+        </tr>
+        <tr>
+          <td>2025</td>
+          <td>
+            <div class="award-name">Award of Honor — Electronic and Electrical Engineering</div>
+            <div class="award-inst">Ladoke Akintola University of Technology</div>
+          </td>
+          <td style="text-align:right;"><span class="award-type-badge">Academic</span></td>
+        </tr>
+        <tr>
+          <td>2021</td>
+          <td>
+            <div class="award-name">Best Female Engineering Student</div>
+            <div class="award-inst">Association of Professional Women in Engineering (APWEN), LAUTECH</div>
+          </td>
+          <td style="text-align:right;"><span class="award-type-badge">Award</span></td>
+        </tr>
+        <tr>
+          <td>2021</td>
+          <td>
+            <div class="award-name">Merit Award — Best Muslim Student</div>
+            <div class="award-inst">LAUTECH Muslim Graduate Association (LAUMGA)</div>
+          </td>
+          <td style="text-align:right;"><span class="award-type-badge">Award</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="container">
+    <div class="sec-header">
+      <h2 class="sec-title"><span class="sec-num">07</span> Contact</h2>
+      <span class="label">Get in Touch</span>
+    </div>
+    <div class="contact-grid">
+      <div>
+        <p class="contact-intro">Open to research, collaboration, and new opportunities.</p>
+        <p class="contact-body">
+          If you are working on something in robotics or embedded systems, thinking about a collaboration, looking for a researcher, or you just want to talk about what I have been building — reach out. I will get back to you.
+        </p>
+        <div class="contact-links">
+          <div class="contact-link-item">
+            <div>
+              <span class="cl-label">Email</span>
+              <span class="cl-val"><a href="mailto:salimatakinwande@gmail.com">salimatakinwande@gmail.com</a></span>
+            </div>
+          </div>
+          <div class="contact-link-item">
+            <div>
+              <span class="cl-label">Mobile</span>
+              <span class="cl-val">+234 806 555 6921</span>
+            </div>
+          </div>
+          <div class="contact-link-item">
+            <div>
+              <span class="cl-label">LinkedIn</span>
+              <span class="cl-val"><a href="https://linkedin.com/in/salimat-akinwande" target="_blank" rel="noopener">linkedin.com/in/salimat-akinwande ↗</a></span>
+            </div>
+          </div>
+          <div class="contact-link-item">
+            <div>
+              <span class="cl-label">GitHub</span>
+              <span class="cl-val"><a href="https://github.com/Salimahh" target="_blank" rel="noopener">github.com/your-handle ↗</a></span>
+            </div>
+          </div>
+          <div class="contact-link-item">
+            <div>
+              <span class="cl-label">Location</span>
+              <span class="cl-val">Ibadan, Oyo State, Nigeria</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Formspree form -->
+      <div>
+        <form
+          class="contact-form"
+          action="https://formspree.io/f/xpqygaqy"
+          method="POST"
+          id="contactForm"
+        >
+          <div class="form-group">
+            <label class="form-label" for="name">Name</label>
+            <input class="form-input" type="text" id="name" name="name" placeholder="Your full name" required />
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="email">Email</label>
+            <input class="form-input" type="email" id="email" name="email" placeholder="your@email.com" required />
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="subject">Subject</label>
+            <input class="form-input" type="text" id="subject" name="subject" placeholder="Research, collaboration, opportunity..." />
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="message">Message</label>
+            <textarea class="form-textarea" id="message" name="message" placeholder="What is on your mind?" required></textarea>
+          </div>
+          <div class="form-success" id="formSuccess">
+            Message sent. I will get back to you shortly.
+          </div>
+          <button type="submit" class="form-submit">Send Message →</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="footer-inner">
+      <span class="footer-name">Salimat Akinwande</span>
+      <div class="footer-links">
+        <a href="https://github.com/Salimahh" target="_blank" rel="noopener">GitHub</a>
+        <a href="https://linkedin.com/in/salimat-akinwande" target="_blank" rel="noopener">LinkedIn</a>
+        <!-- <a href="Salimat_Oluwatobi_Akinwande_RESUME.pdf" download>CV</a> -->
+      </div>
+      <span class="footer-copy">© 2026 — Ibadan, Nigeria</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Formspree AJAX submission
+  const form = document.getElementById('contactForm');
+  const success = document.getElementById('formSuccess');
+  if (form) {
+    form.addEventListener('submit', async function(e) {
+      e.preventDefault();
+      const data = new FormData(form);
+      try {
+        const res = await fetch(form.action, {
+          method: 'POST',
+          body: data,
+          headers: { 'Accept': 'application/json' }
+        });
+        if (res.ok) {
+          form.reset();
+          success.style.display = 'block';
+          setTimeout(() => { success.style.display = 'none'; }, 5000);
+        }
+      } catch(err) {
+        console.error(err);
+      }
+    });
+  }
+</script>
+
+</body>
+</html>
